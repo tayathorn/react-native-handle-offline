@@ -5,11 +5,14 @@ import {
   StyleSheet,
 } from 'react-native'
 
+const DEFAULT_TITLE = 'Title'
+
 const Button = ({ onPress, title, style }) => {
+  console.log('style : ', style)
   return (
     <TouchableOpacity onPress={onPress} style={[styles.wrapper, {...style}]}>
       <Text style={styles.title}>
-        {title}
+        {title ? title : DEFAULT_TITLE}
       </Text>
     </TouchableOpacity>
   )
@@ -17,12 +20,14 @@ const Button = ({ onPress, title, style }) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: '#212121',
+    backgroundColor: '#EA4D8A',
     padding: 15,
   },
 
   title: {
     color: 'white',
+    textAlign: 'center',
+    fontSize: 16,
   },
 })
 
