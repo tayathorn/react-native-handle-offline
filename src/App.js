@@ -6,12 +6,12 @@ import {
   View
 } from 'react-native';
 
-import Home from './screen/Home'
+import AppRouter from './navigation/router'
 
 export default class App extends Component {
   render() {
     return (
-      <Home />
+      <AppRouter />
     );
   }
 }
