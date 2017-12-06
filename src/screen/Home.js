@@ -3,6 +3,8 @@ import {
   View,
 } from 'react-native';
 
+import axios from 'axios'
+
 
 import UserData from '../data/user'
 
@@ -10,8 +12,23 @@ import Button from '../components/Button'
 import UserList from '../components/UserList'
 
 export default class Home extends Component {
-  _onPressAddNewUser = () => {
 
+  state = {
+    users: [...UserData]
+  }
+
+  _getUser = () => {
+    const { users} =this.state
+    axios.get('https://randomuser.me/api')
+      .then((response) => {
+        const {results} = response.data
+        this.setState({
+          users: [...results, ...users ]
+        })
+      })
+  }
+  _onPressAddNewUser = () => {
+    this._getUser()
   }
   _onPressUser = (index) => {
   
@@ -26,7 +43,7 @@ export default class Home extends Component {
           onPress={this._onPressAddNewUser}
         />
         <UserList 
-          data={UserData} 
+          data={this.state.users} 
           onPress={this._onPressUser}
         />
       </View>
