@@ -8,7 +8,6 @@ import {
 const DEFAULT_TITLE = 'Title'
 
 const Button = ({ onPress, title, style }) => {
-  console.log('style : ', style)
   return (
     <TouchableOpacity onPress={onPress} style={[styles.wrapper, {...style}]}>
       <Text style={styles.title}>

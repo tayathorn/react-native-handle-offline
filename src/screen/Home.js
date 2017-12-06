@@ -3,20 +3,31 @@ import {
   View,
 } from 'react-native';
 
+
+import UserData from '../data/user'
+
 import Button from '../components/Button'
+import UserList from '../components/UserList'
 
 export default class Home extends Component {
+  _onPressAddNewUser = () => {
+
+  }
+  _onPressUser = () => {
+    console.warn('_onPressUser')
+  }
   render() {
     console.log('button : ', styles.button)
     return (
       <View style={styles.container} >
         <Button 
           style={styles.button} 
-          title={'Push New Page : HOC'}
-        />
-        <Button 
-          style={styles.button} 
           title={'Add User'}
+          onPress={this._onPressAddNewUser}
+        />
+        <UserList 
+          data={UserData} 
+          onPress={this._onPressUser}
         />
       </View>
     )
