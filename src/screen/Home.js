@@ -13,8 +13,8 @@ export default class Home extends Component {
   _onPressAddNewUser = () => {
 
   }
-  _onPressUser = () => {
-    console.warn('_onPressUser')
+  _onPressUser = (index) => {
+  
   }
   render() {
     console.log('button : ', styles.button)

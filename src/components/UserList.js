@@ -12,11 +12,12 @@ const UserList = ({ data, onPress }) => {
 
   _keyExtractor = (item, index) => index
 
-  _renderUser = ({ item }) => {
+  _renderUser = ({ item, index }) => {
     const { name, picture} = item
 
     return (
       <User
+        id={index}
         name={name}
         thumbnail={picture.thumbnail}
         onPress={onPress}

@@ -9,9 +9,9 @@ import {
 
 const THUMBNAIL_SIZE = 50
 
-const User = ({ onPress, thumbnail, name }) => {
+const User = ({ onPress, thumbnail, name, id }) => {
   return (
-    <TouchableOpacity style={styles.wrapper} onPress={onPress} >
+    <TouchableOpacity style={styles.wrapper} onPress={() => onPress(id)} >
       <View style={styles.thumbnailWrapper} >
         <Image
           source={{ uri: thumbnail }}
