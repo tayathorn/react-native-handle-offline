@@ -7,9 +7,9 @@ import {
 const user = (state = initialState.user, action) => {
   switch (action.type) {
     case GET_USER_SUCCESS:
-      return { data: action.payload, error: null }
+      return { data: [...action.payload, ...state.data], error: null }
     case GET_USER_FAILED:
-      return { data: [], error: action.error }
+      return { data: [...state.data], error: action.error }
     default:
       return state
   }

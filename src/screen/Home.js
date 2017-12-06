@@ -1,49 +1,51 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import React, { Component } from 'react'
 import {
   View,
 } from 'react-native';
 
-import axios from 'axios'
-
+import { getUserRequested } from '../actions/getUser'
 
 import UserData from '../data/user'
 
 import Button from '../components/Button'
 import UserList from '../components/UserList'
 
-export default class Home extends Component {
+class Home extends Component {
 
-  state = {
-    users: [...UserData]
-  }
+  // state = {
+  //   users: [...UserData]
+  // }
 
   _getUser = () => {
-    const { users} =this.state
-    axios.get('https://randomuser.me/api')
-      .then((response) => {
-        const {results} = response.data
-        this.setState({
-          users: [...results, ...users ]
-        })
-      })
+    const { user } = this.props
+    // axios.get('https://randomuser.me/api')
+    //   .then((response) => {
+    //     const {results} = response.data
+    //     this.setState({
+    //       users: [...results, ...users ]
+    //     })
+    //   })
+    
+    this.props.dispatch(getUserRequested())
   }
   _onPressAddNewUser = () => {
     this._getUser()
   }
   _onPressUser = (index) => {
-  
+
   }
   render() {
-    console.log('button : ', styles.button)
+    const { data } = this.props.user
     return (
       <View style={styles.container} >
-        <Button 
-          style={styles.button} 
+        <Button
+          style={styles.button}
           title={'Add User'}
           onPress={this._onPressAddNewUser}
         />
-        <UserList 
-          data={this.state.users} 
+        <UserList
+          data={data}
           onPress={this._onPressUser}
         />
       </View>
@@ -60,3 +62,11 @@ const styles = {
     margin: 10,
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Home)

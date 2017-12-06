@@ -11,7 +11,7 @@ export function* getUser() {
   try {
     const response = yield call(fetchUser)
     const { results } = response.data
-    yield put(getUserSuccess(...results))
+    yield put(getUserSuccess(results))
   } catch (error) {
     yield put(getUserFailed(error.message))
   }
