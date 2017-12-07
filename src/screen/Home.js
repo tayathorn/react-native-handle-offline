@@ -13,28 +13,19 @@ import UserList from '../components/UserList'
 
 class Home extends Component {
 
-  // state = {
-  //   users: [...UserData]
-  // }
-
   _getUser = () => {
     const { user } = this.props
-    // axios.get('https://randomuser.me/api')
-    //   .then((response) => {
-    //     const {results} = response.data
-    //     this.setState({
-    //       users: [...results, ...users ]
-    //     })
-    //   })
-    
     this.props.dispatch(getUserRequested())
   }
+
   _onPressAddNewUser = () => {
     this._getUser()
   }
+
   _onPressUser = (index) => {
 
   }
+  
   render() {
     const { data } = this.props.user
     return (
