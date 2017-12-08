@@ -50,15 +50,10 @@ const styles = {
   }
 }
 
-const DetailWrap = withNetworkConnectivity({
-  withRedux: true,
-})(Detail)
-
-
 const mapStateToProps = (state) => {
   return {
     network: state.network.isConnected
   }
 }
 
-export default connect(mapStateToProps)(DetailWrap)
+export default connect(mapStateToProps)(Detail)

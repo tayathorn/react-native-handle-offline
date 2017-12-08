@@ -7,15 +7,20 @@ import {
 } from 'react-native';
 
 import { Provider } from 'react-redux'
-import store from './store'
+import { withNetworkConnectivity } from 'react-native-offline'
 
+import store from './store'
 import AppRouter from './navigation/router'
+
+const AppWrapper = withNetworkConnectivity({
+  withRedux: true,
+})(AppRouter)
 
 export default class App extends Component {
   render() {
     return (
       <Provider store={store} >
-        <AppRouter />
+        <AppWrapper />
       </Provider>
     );
   }
