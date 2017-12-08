@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import {
-  View,
+  View, Text,
 } from 'react-native';
-
+import { ConnectivityRenderer } from 'react-native-offline'
 import { getUserRequested } from '../actions/getUser'
 
 import UserData from '../data/user'
@@ -23,13 +23,34 @@ class Home extends Component {
   }
 
   _onPressUser = (index) => {
+    this.props.navigation.navigate('Detail')
+  }
 
+  _renderNoNetwork = () => {
+    return(
+      <View style={styles.noNetwork.wrapper} >
+        <Text style={styles.noNetwork.title} >
+          No Internet
+        </Text>
+      </View>
+    )
   }
   
   render() {
     const { data } = this.props.user
     return (
       <View style={styles.container} >
+        <ConnectivityRenderer>
+          {
+            isConnected => (
+              isConnected ? (
+                null
+              ) : (
+                this._renderNoNetwork()
+              )
+            )
+          }
+        </ConnectivityRenderer>
         <Button
           style={styles.button}
           title={'Add User'}
@@ -51,7 +72,20 @@ const styles = {
 
   button: {
     margin: 10,
+  },
+
+  noNetwork: {
+    wrapper: {
+      height: 30,
+      backgroundColor: '#b71c1c',
+      justifyContent: 'center'
+    },
+    title: {
+      color: 'white',
+      textAlign: 'center'
+    }
   }
+
 }
 
 const mapStateToProps = (state) => {

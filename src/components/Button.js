@@ -7,6 +7,8 @@ import {
 
 const DEFAULT_TITLE = 'Title'
 
+
+// stylsheet flattern -> merge style from stylesheet.create
 const Button = ({ onPress, title, style }) => {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.wrapper, {...style}]}>
@@ -29,5 +31,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 })
+
 
 export default Button

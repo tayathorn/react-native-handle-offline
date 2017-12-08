@@ -1,6 +1,7 @@
 import { StackNavigator } from 'react-navigation'
 
 import Home from '../screen/Home'
+import Detail from '../screen/Detail'
 
 const AppRouter = StackNavigator({
   Home: {
@@ -8,6 +9,9 @@ const AppRouter = StackNavigator({
     navigationOptions: {
       headerTitle: 'Home'
     }
+  },
+  Detail: {
+    screen: Detail,
   }
 }
 )
