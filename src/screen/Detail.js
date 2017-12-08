@@ -30,7 +30,7 @@ class Detail extends Component {
     return (
       <View style={styles.container} >
         {
-          this.props.isConnected ? this._renderImage() : this._renderNoNetwork()
+          this.props.network ? this._renderImage() : this._renderNoNetwork()
         }
       </View>
     )
@@ -50,6 +50,15 @@ const styles = {
   }
 }
 
-export default withNetworkConnectivity({
-  // withRedux: true,
+const DetailWrap = withNetworkConnectivity({
+  withRedux: true,
 })(Detail)
+
+
+const mapStateToProps = (state) => {
+  return {
+    network: state.network.isConnected
+  }
+}
+
+export default connect(mapStateToProps)(DetailWrap)
