@@ -6,7 +6,9 @@ import rootSaga from '../sagas'
 import reducers from '../reducers'
 
 const sagaMiddleware = createSagaMiddleware()
-const networkMiddleware = createNetworkMiddleware()
+const networkMiddleware = createNetworkMiddleware({
+  actionTypes: ['GET_USER_REQUEST']
+})
 
 const store = createStore(
   reducers,
