@@ -5,7 +5,7 @@ import {
   getUserFailed
 } from '../actions/getUser'
 
-import { GET_USER_REQUESTED } from '../constants/actionTypes'
+import { FETCH_USER_REQUEST } from '../constants/actionTypes'
 
 export function* getUser() {
   try {
@@ -18,7 +18,7 @@ export function* getUser() {
 }
 
 function* watchGetUserData() {
-  yield takeLatest(GET_USER_REQUESTED, getUser)
+  yield takeLatest(FETCH_USER_REQUEST, getUser)
 }
 
 export default watchGetUserData

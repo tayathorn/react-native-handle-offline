@@ -26,7 +26,6 @@ class Detail extends Component {
   }
 
   render() {
-    console.log('[isConnected] -- inject as prop : ', this.props.isConnected)
     return (
       <View style={styles.container} >
         {
@@ -52,7 +51,7 @@ const styles = {
 
 const mapStateToProps = (state) => {
   return {
-    network: state.network.isConnected
+    network: state.network.isConnected,
   }
 }
 

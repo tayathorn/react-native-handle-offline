@@ -7,7 +7,7 @@ import {
 import { offlineActionTypes } from 'react-native-offline'
 
 const user = (state = initialState.user, action) => {
-  console.warn(action.type)
+  console.warn(action)
   switch (action.type) {
     case GET_USER_SUCCESS:
       return { data: [...action.payload, ...state.data], error: null }
